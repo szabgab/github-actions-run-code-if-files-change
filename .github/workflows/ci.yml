@@ -15,6 +15,7 @@ jobs:
       - name: Before cache
         run: |
           echo before
+          cat /proc/cpuinfo | grep processor
 
       - name: Cache
         id: cache-something

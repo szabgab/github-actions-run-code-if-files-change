@@ -21,7 +21,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: was-build.txt
-          key: build-${{ hashFiles('requirements.txt other.txt') }}
+          key: build-${{ hashFiles('requirements.txt', 'other.txt') }}
 
       - name: Building database
         run: ./build.sh

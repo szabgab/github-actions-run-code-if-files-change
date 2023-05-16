@@ -1,0 +1,19 @@
+name: Shell
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Build
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Shell - View environment
+        run: |
+          uname -a
+          printenv | sort
+

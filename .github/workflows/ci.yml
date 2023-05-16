@@ -12,8 +12,18 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Shell - View environment
+      - name: Before cache
         run: |
-          uname -a
-          printenv | sort
+          echo before
+
+      - name: Cache
+        id: cache-something
+        uses: actions/cache@v3
+        with:
+          path: was-build.txt
+          key: build-${{ hashFiles('requirements.txt') }}
+
+      - name: Building database
+        run: ./build.sh
+
 

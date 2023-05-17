@@ -1,7 +1,7 @@
-if test ! -e was-build.txt;
+if test ! -e already-built.txt;
 then
     echo "start building"
     # ... building
-    touch was-build.txt
+    touch already-built.txt
 fi
 

@@ -4,27 +4,6 @@ on:
   push:
   pull_request:
   workflow_dispatch:
-    inputs:
-         logLevel:
-           description: 'Log level'
-           required: true
-           default: 'warning'
-           type: choice
-           options:
-           - info
-           - warning
-           - debug
-         tags:
-           description: 'Test scenario tags'
-           required: false
-           type: boolean
-         environment:
-           description: 'Environment to run tests against'
-           type: environment
-           required: true
-
-env:
-  DAY_OF_WEEK: Monday
 
 jobs:
   build:
@@ -36,13 +15,12 @@ jobs:
       - name: Before cache
         run: |
           echo before
-          cat /proc/cpuinfo | grep processor
 
       - name: Cache
         id: cache-something
         uses: actions/cache@v3
         with:
-          path: was-build.txt
+          path: already-built.txt
           key: build-${{ hashFiles('requirements.txt', 'other.txt') }}
 
       - name: Building database
